@@ -21,11 +21,11 @@ export type CalcTaxResult = z.infer<typeof schema>
 export const useCalcTax = () => {
   const [tax, setTax] = useState(0)
 
-  const [calcStatus, setCalcStatus] = useState<CalcStatus>('before')
+  const [calcStatus, setCalcStatus] = useState<CalcStatus>('before-calculation')
 
   const { mutate } = useMutation(
     async (param: CalcTaxParam) => {
-      setCalcStatus('calculating')
+      setCalcStatus('under-calculation')
 
       const response = await fetch(calcTaxUrl, {
         method: 'POST',
@@ -35,7 +35,7 @@ export const useCalcTax = () => {
         body: JSON.stringify(param),
       })
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('Response is not ok')
       }
 
       const responseJson = await response.json()

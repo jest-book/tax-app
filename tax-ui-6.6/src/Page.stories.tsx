@@ -25,12 +25,12 @@ export const ValidationError: ComponentStoryObj<typeof Presentation> = {
   },
 }
 
-export const Before: ComponentStoryObj<typeof Presentation> = {
-  args: { tax: 10000, calcStatus: 'before' },
+export const BeforeCalculation: ComponentStoryObj<typeof Presentation> = {
+  args: { tax: 10000, calcStatus: 'before-calculation' },
 }
 
-export const Calculating: ComponentStoryObj<typeof Presentation> = {
-  args: { tax: 10000, calcStatus: 'calculating' },
+export const UnderCalculation: ComponentStoryObj<typeof Presentation> = {
+  args: { tax: 10000, calcStatus: 'under-calculation' },
 }
 
 export const Succeeded: ComponentStoryObj<typeof Presentation> = {

@@ -1,8 +1,8 @@
 export type CalcStatus =
   // 計算前
-  | 'before'
+  | 'before-calculation'
   // 計算中
-  | 'calculating'
+  | 'under-calculation'
   // 計算成功
   | 'succeeded'
   // 計算失敗

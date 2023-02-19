@@ -127,7 +127,7 @@ export const InputForm = ({
               colorScheme="blue"
               alignSelf="flex-end"
               type="submit"
-              isLoading={calcStatus === 'calculating'}
+              isLoading={calcStatus === 'under-calculation'}
             >
               所得税を計算する
             </Button>

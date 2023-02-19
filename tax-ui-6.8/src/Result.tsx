@@ -25,7 +25,7 @@ const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('ja-JP').format(price)
 }
 
-const BeforeView = () => (
+const BeforeCalculationView = () => (
   <Box aria-label="tax">
     <Text as="span" fontSize="6xl">
       ---
@@ -36,7 +36,7 @@ const BeforeView = () => (
   </Box>
 )
 
-const CalculatingView = () => <Spinner size="xl" m={5} />
+const UnderCalculationView = () => <Spinner size="xl" m={5} />
 
 const FailedView = () => (
   <Alert status="error">
@@ -69,10 +69,10 @@ const CalcStatusView = ({
   calcStatus: CalcStatus
 }) => {
   switch (calcStatus) {
-    case 'before':
-      return <BeforeView />
-    case 'calculating':
-      return <CalculatingView />
+    case 'before-calculation':
+      return <BeforeCalculationView />
+    case 'under-calculation':
+      return <UnderCalculationView />
     case 'succeeded':
       return <SucceededView tax={tax} />
     default:
