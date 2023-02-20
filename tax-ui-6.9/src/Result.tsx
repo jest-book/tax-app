@@ -26,7 +26,7 @@ const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('ja-JP').format(price)
 }
 
-const BeforeView = () => (
+const BeforeCalculationView = () => (
   <Box aria-label="tax">
     <Text as="span" fontSize="6xl">
       ---
@@ -37,7 +37,7 @@ const BeforeView = () => (
   </Box>
 )
 
-const CalculatingView = () => <Spinner size="xl" m={5} />
+const UnderLongCalculationView = () => <Spinner size="xl" m={5} />
 
 const FailedView = () => (
   <Alert status="error">
@@ -48,16 +48,19 @@ const FailedView = () => (
   </Alert>
 )
 
-const SucceededView = ({ tax }: { tax: number }) => (
-  <Box aria-label="tax">
-    <Text as="span" fontSize="6xl">
-      {formatPrice(tax)}
-    </Text>
-    <Text as="span" marginLeft={1}>
-      円
-    </Text>
-  </Box>
-)
+const SucceededView = ({ tax }: { tax: number }) => {
+  const taxStr = formatPrice(tax)
+  return (
+    <Box aria-label="tax">
+      <Text as="span" fontSize="6xl">
+        {taxStr}
+      </Text>
+      <Text as="span" marginLeft={1}>
+        円
+      </Text>
+    </Box>
+  )
+}
 
 const CalcStatusView = ({
   tax,
@@ -68,17 +71,17 @@ const CalcStatusView = ({
   calcStatus: CalcStatus
   calcResultStatus: CalcResultStatus
 }) => {
-  if (calcStatus === 'before') {
-    return <BeforeView />
+  if (calcStatus === 'before-calculation') {
+    return <BeforeCalculationView />
   }
 
-  if (calcStatus === 'long-calculating') {
-    return <CalculatingView />
+  if (calcStatus === 'under-long-calculation') {
+    return <UnderLongCalculationView />
   }
 
   switch (calcResultStatus) {
-    case 'notyet':
-      return <BeforeView />
+    case 'no-result':
+      return <BeforeCalculationView />
     case 'succeeded':
       return <SucceededView tax={tax} />
     default:

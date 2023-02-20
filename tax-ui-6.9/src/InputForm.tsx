@@ -127,8 +127,8 @@ export const InputForm = ({
               colorScheme="blue"
               alignSelf="flex-end"
               type="submit"
-              isDisabled={calcStatus === 'calculating'}
-              isLoading={calcStatus === 'long-calculating'}
+              isDisabled={calcStatus === 'under-calculation'}
+              isLoading={calcStatus === 'under-long-calculation'}
             >
               所得税を計算する
             </Button>

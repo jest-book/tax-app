@@ -1,16 +1,16 @@
 export type CalcStatus =
   // 計算前
-  | 'before'
+  | 'before-calculation'
   // 計算中
-  | 'calculating'
+  | 'under-calculation'
   // 長い計算中
-  | 'long-calculating'
+  | 'under-long-calculation'
   // 計算終了
   | 'done'
 
 export type CalcResultStatus =
   // 未計算
-  | 'notyet'
+  | 'no-result'
   // 計算成功
   | 'succeeded'
   // 計算失敗

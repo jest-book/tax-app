@@ -44,8 +44,8 @@ export const Page = () => {
   return (
     <Presentation
       tax={tax}
-      calcStatus={calcStatus}
       onInputFormSubmit={handleInputFormSubmit}
+      calcStatus={calcStatus}
     />
   )
 }
