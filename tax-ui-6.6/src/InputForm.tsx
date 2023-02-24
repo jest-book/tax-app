@@ -27,8 +27,6 @@ import {
   VStack,
 } from '@chakra-ui/react'
 
-import { CalcStatus } from './calcStatus'
-
 const schema = z
   .object({
     yearsOfService: z.number().int().gte(1).lte(100),
@@ -42,14 +40,9 @@ export type FormInputs = z.infer<typeof schema>
 
 type InputFormProps = CardProps & {
   onInputFormSubmit: SubmitHandler<FormInputs>
-  calcStatus: CalcStatus
 }
 
-export const InputForm = ({
-  onInputFormSubmit,
-  calcStatus,
-  ...props
-}: InputFormProps) => {
+export const InputForm = ({ onInputFormSubmit, ...props }: InputFormProps) => {
   const {
     register,
     handleSubmit,
@@ -123,12 +116,7 @@ export const InputForm = ({
               </FormErrorMessage>
             </FormControl>
 
-            <Button
-              colorScheme="blue"
-              alignSelf="flex-end"
-              type="submit"
-              isLoading={calcStatus === 'under-calculation'}
-            >
+            <Button colorScheme="blue" alignSelf="flex-end" type="submit">
               所得税を計算する
             </Button>
           </VStack>

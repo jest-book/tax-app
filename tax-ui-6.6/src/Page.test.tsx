@@ -55,27 +55,6 @@ describe('ページコンポーネント', () => {
     })
   })
 
-  test('所得税計算APIのステータスコードが200-299以外の場合', async () => {
-    server.use(
-      rest.post('http://localhost:3000/calc-tax', async (req, res, ctx) => {
-        return res(ctx.status(400), ctx.json({ message: 'Invalid parameter.' }))
-      }),
-    )
-
-    const user = userEvent.setup()
-    render(<Page />)
-
-    await user.click(screen.getByText('所得税を計算する'))
-
-    await waitFor(() =>
-      expect(
-        screen.getByText(
-          'エラーが発生しました。しばらくしてからもう一度お試しください。',
-        ),
-      ).toBeInTheDocument(),
-    )
-  })
-
   describe('勤続年数を入力できる', () => {
     test.each`
       yearsOfServiceValue
