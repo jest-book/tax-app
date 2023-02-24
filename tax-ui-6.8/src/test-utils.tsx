@@ -8,7 +8,7 @@ import {
   RenderOptions,
 } from '@testing-library/react'
 import { matchRequestUrl, MockedRequest } from 'msw'
-import { SetupServerApi } from 'msw/lib/node'
+import { SetupServer } from 'msw/lib/node'
 
 import { ChakraProvider, theme } from '@chakra-ui/react'
 
@@ -46,7 +46,7 @@ const customRenderHook = <Result, Props>(
 export { customRenderHook as renderHook }
 
 export const waitForRequest = (
-  server: SetupServerApi,
+  server: SetupServer,
   method: string,
   url: string,
 ) => {

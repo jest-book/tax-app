@@ -93,6 +93,7 @@ describe('ページコンポーネント', () => {
       ${'-1'}
       ${'0'}
       ${'101'}
+      ${'10.5'}
     `('勤続年数$yearsOfServiceValue', async ({ yearsOfServiceValue }) => {
       const user = userEvent.setup()
       render(<Page />)
@@ -247,6 +248,7 @@ describe('ページコンポーネント', () => {
       severancePayValue
       ${'-1'}
       ${'1000000000001'}
+      ${'8000000.1'}
     `('退職金$severancePayValue', async ({ severancePayValue }) => {
       const user = userEvent.setup()
       render(<Page />)

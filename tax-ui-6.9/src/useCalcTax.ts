@@ -69,7 +69,7 @@ export const useCalcTax = () => {
     }, 300)
 
     return () => clearTimeout(id)
-  }, [calcStatus, setCalcStatus])
+  }, [calcStatus])
 
   return { mutate, tax, calcStatus, calcResultStatus }
 }

@@ -9,7 +9,6 @@ export default {
 } as ComponentMeta<typeof Presentation>
 
 type StoryType = ComponentStoryObj<typeof Presentation>
-
 export const BeforeCalculation: StoryType = {
   args: {
     tax: 0,

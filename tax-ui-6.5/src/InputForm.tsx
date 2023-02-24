@@ -29,10 +29,10 @@ import {
 
 const schema = z
   .object({
-    yearsOfService: z.number().gte(1).lte(100),
+    yearsOfService: z.number().int().gte(1).lte(100),
     isDisability: z.boolean(),
     isOfficer: z.string().transform((val) => !!Number(val)),
-    severancePay: z.number().gte(0).lte(1_000_000_000_000),
+    severancePay: z.number().int().gte(0).lte(1_000_000_000_000),
   })
   .strict()
 
@@ -62,7 +62,7 @@ export const InputForm = ({ onInputFormSubmit, ...props }: InputFormProps) => {
         </Center>
       </CardHeader>
       <CardBody>
-        <form onSubmit={handleSubmit(onInputFormSubmit)}>
+        <form onSubmit={handleSubmit(onInputFormSubmit)} noValidate>
           <VStack spacing={5}>
             <FormControl isInvalid={!!errors.yearsOfService}>
               <FormLabel fontWeight="bold">勤続年数</FormLabel>

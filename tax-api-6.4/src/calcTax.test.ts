@@ -281,12 +281,13 @@ describe('退職金の所得税', () => {
 
   /* eslint-disable  @typescript-eslint/no-explicit-any */
   describe('入力値バリデーション', () => {
-    describe('勤続年数は1以上100以下の数値であること', () => {
+    describe('勤続年数は1以上100以下の整数であること', () => {
       test.each`
         yearsOfService
         ${-1}
         ${0}
         ${101}
+        ${10.5}
       `('勤続年数$yearsOfService年はエラー', ({ yearsOfService }) => {
         expect(() =>
           calcIncomeTaxForSeverancePay({
@@ -314,11 +315,12 @@ describe('退職金の所得税', () => {
       })
     })
 
-    describe('退職金は0以上1兆以下の数値であること', () => {
+    describe('退職金は0以上1兆以下の整数であること', () => {
       test.each`
         severancePay
         ${-1}
         ${1_000_000_000_001}
+        ${8_000_000.1}
       `('退職金$severancePay円はエラー', ({ severancePay }) => {
         expect(() =>
           calcIncomeTaxForSeverancePay({
