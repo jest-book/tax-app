@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "outDir": "dist",
+    "esModuleInterop": true,
     "strict": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true
-  }
+  },
+  "include": [
+    "src"
+  ]
 }

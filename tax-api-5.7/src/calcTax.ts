@@ -119,13 +119,13 @@ export const calcTaxWithheld = ({ incomeTaxBase }: CalcTaxWithheldInput) => {
 const calcSeverancePayTaxInputSchema = z
   .object({
     // 勤続年数
-    yearsOfService: z.number().gte(1).lte(100),
+    yearsOfService: z.number().int().gte(1).lte(100),
     // 障害者となったことに直接基因して退職したか
     isDisability: z.boolean(),
     // 役員等かどうか
     isOfficer: z.boolean(),
     // 退職金
-    severancePay: z.number().gte(0).lte(1_000_000_000_000),
+    severancePay: z.number().int().gte(0).lte(1_000_000_000_000),
   })
   .strict()
 

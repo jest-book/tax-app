@@ -1,4 +1,5 @@
 import request from 'supertest'
+
 import app from './app'
 
 describe('POST /calc-tax', function () {
@@ -14,12 +15,13 @@ describe('POST /calc-tax', function () {
   })
 
   describe('入力値バリデーション', () => {
-    describe('勤続年数は1以上100以下の数値であること', () => {
+    describe('勤続年数は1以上100以下の整数であること', () => {
       test.each`
         yearsOfService
         ${-1}
         ${0}
         ${101}
+        ${10.5}
       `('勤続年数$yearsOfService年はエラー', async ({ yearsOfService }) => {
         const res = await request(app).post('/calc-tax').send({
           yearsOfService,
@@ -50,11 +52,12 @@ describe('POST /calc-tax', function () {
       )
     })
 
-    describe('退職金は0以上1兆以下の数値であること', () => {
+    describe('退職金は0以上1兆以下の整数であること', () => {
       test.each`
         severancePay
         ${-1}
         ${1_000_000_000_001}
+        ${8_000_000.1}
       `('退職金$severancePay円はエラー', async ({ severancePay }) => {
         const res = await request(app).post('/calc-tax').send({
           yearsOfService: 10,

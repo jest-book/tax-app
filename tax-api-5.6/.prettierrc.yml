@@ -1,6 +1,4 @@
 trailingComma: all
 semi: false
 singleQuote: true
-
-# 変えたとこ
 arrowParens: always
