@@ -24,7 +24,7 @@ export const Failed: ComponentStoryObj<typeof Presentation> = {
 }
 
 export const ValidationError: ComponentStoryObj<typeof Presentation> = {
-  args: { tax: 0, calcStatus: 'before-calculation' },
+  args: { tax: null, calcStatus: 'before-calculation' },
   play: () => {
     userEvent.clear(screen.getByLabelText('勤続年数'))
     userEvent.clear(screen.getByLabelText('退職金'))
