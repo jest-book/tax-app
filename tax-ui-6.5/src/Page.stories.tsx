@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
-import { userEvent } from '@storybook/testing-library'
-import { screen } from '@storybook/testing-library'
+import { screen, userEvent } from '@storybook/testing-library'
 
 import { Presentation } from './Page'
 
